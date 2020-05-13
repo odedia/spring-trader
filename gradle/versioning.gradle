@@ -1,0 +1,22 @@
+// Sets version variable.
+// Major is hardcoded.
+// Minor is harcoded.
+// build is taken from environment variable "SOURCE_BUILD_NUMBER"
+
+version = new ProjectVersion()
+
+class ProjectVersion {
+	String build
+	ProjectVersion() {
+                def file = new File('version/number')
+                if(file.exists()) {
+                   this.build = file.text.trim()
+                } else {
+                    this.build = "0.3.2"
+                }
+	}
+	@Override
+	String toString() {
+		build
+	}
+}
